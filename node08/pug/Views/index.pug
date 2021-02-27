@@ -1,0 +1,57 @@
+html 
+    head 
+        title Hello Pug! 
+    body
+        // Comment Line Only //
+        //- Comment line with //-
+        include menu
+        //- =name
+        //- h3=name
+        //- h3 =name
+        //- h3 #{name}
+        //- | Name =name
+        //- | Name #{name} 
+        h1 Hello PUG in h1 tag...
+        | Subtitle Message...
+        hr
+        - var jobTitle = 'Legacy Implementation Liaison'
+        - var jobDesc = 'Regional'
+        - var city = 'North Kade'
+        =jobTitle.toUpperCase()
+        br
+        =jobDesc
+        p P tag city: #{city.toLowerCase()}
+        hr
+        - var number = 20;
+        // if ! === unlesss
+        unless number === 9
+            | Unless test. The number isnt nine.
+        br
+        if number !== 9
+            | Unless test. The number isnt nine.
+        hr
+        if !number
+            | Number variable doesnt exist.
+        else if number === 10
+            | The number is ten.
+        else 
+            | The number isnt ten.
+        hr
+        span(style="color:white;background-color:red;")
+            | Pug is here!!! 
+        hr
+        ul 
+            each val,index in ["AAA","BBB","CCC","DDD","EEE","FFF","GGG"]
+                li=index + '.' + val
+        hr
+        - var n = 0;
+        ul
+          while n < 4
+             li= n++
+        hr
+        | Hello PUG in new line. 
+        include footer.pug
+
+
+    
+        
