@@ -11,6 +11,22 @@ router.get('/', (req, res) => {
                     .catch((errMsg)=>{res.json(errMsg)})
 })
 
+/*Get Movies with Directors */
+router.get('/listWithDirectors',(req,res,next)=>{
+    MovieModel.aggregate([
+        {
+            $lookup:{
+                from:'directors',
+                localField:'director_id',
+                foreignField:'_id',
+                as:'director'
+            }
+        }
+    ])
+        .then((data)=>{res.json(data)})
+        .catch((err)=>{res.json(err)})
+})
+
 //GET Top 10 Movies : localhost:3000/api/movies/top10/
 router.get('/top10', (req, res) => {
     MovieModel.find().sort({imdb_score:-1}).limit(10)

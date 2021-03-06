@@ -5,13 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/user.routes');
 var moviesRouter = require('./routes/movie.routes');
 var directorsRouter = require('./routes/director.routes');
 
-
-
 var app = express();
+
+//Config
+const config = require('./config')
+app.set('api_secret_key',config.api_secret_key)
 
 //db connect
 const db = require("./helpers/db")();
